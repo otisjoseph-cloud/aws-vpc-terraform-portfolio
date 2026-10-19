@@ -24,7 +24,7 @@ are part of CI. Registry access is still needed to install the provider.
 
 The [Network validation workflow](../../.github/workflows/terraform-validation.yml)
 executes these commands. Release acceptance requires a successful run on the
-published revision. Inspect [GitHub Actions](https://github.com/otisjoseph-cloud/aws-vpc-terraform/actions)
+published revision. Inspect [GitHub Actions](https://github.com/otisjoseph-cloud/-aws-vpc-terraform-portfolio/actions)
 and match the run's head SHA to the commit being reviewed; a prior green run does
 not establish that later revisions passed. Run logs provide the actual commands,
 test counts and outcomes without embedding a stale success badge or commit claim.
