@@ -24,7 +24,7 @@ are part of CI. Registry access is still needed to install the provider.
 
 The [Network validation workflow](../../.github/workflows/terraform-validation.yml)
 executes these commands. Release acceptance requires a successful run on the
-published revision. Inspect [GitHub Actions](https://github.com/otisjoseph-cloud/-aws-vpc-terraform-portfolio/actions)
+published revision. Inspect [GitHub Actions](https://github.com/otisjoseph-cloud/aws-vpc-terraform-portfolio/actions)
 and match the run's head SHA to the commit being reviewed; a prior green run does
 not establish that later revisions passed. Run logs provide the actual commands,
 test counts and outcomes without embedding a stale success badge or commit claim.
@@ -63,7 +63,7 @@ AWS resources. Real correction would require reviewed IaC and separate approval.
 During preparation, a local cached AWS-provider package produced a checksum
 error at validation despite successful initialization. The lock file was retained;
 an official platform-lock check left it unchanged. This local error is not a
-validation pass. For this repository, verify the latest successful [Network validation workflow](https://github.com/otisjoseph-cloud/-aws-vpc-terraform-portfolio/actions) and match its head SHA to the revision under review. A prior green run is not proof that a later revision passed.
+validation pass. For this repository, verify the latest successful [Network validation workflow](https://github.com/otisjoseph-cloud/aws-vpc-terraform-portfolio/actions) and match its head SHA to the revision under review. A prior green run is not proof that a later revision passed.
 Never disable checksum verification to make a check green.
 
 ## Remaining limitations
