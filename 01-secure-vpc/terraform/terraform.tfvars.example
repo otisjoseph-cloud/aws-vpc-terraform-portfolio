@@ -1,0 +1,9 @@
+# This example contains no credentials or secrets.
+aws_region          = "us-east-1"
+enable_nat_gateways = false
+project_name        = "secure-vpc-lab"
+environment         = "lab"
+
+# Leave empty for the first two available AZ names alphabetically, or provide
+# exactly two AZ names that exist in aws_region.
+availability_zones = []

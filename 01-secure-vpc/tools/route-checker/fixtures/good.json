@@ -1,0 +1,94 @@
+{
+  "RouteTables": [
+    {
+      "RouteTableId": "rtb-public-0",
+      "VpcId": "vpc-synthetic",
+      "Tags": [
+        {
+          "Key": "Tier",
+          "Value": "public"
+        }
+      ],
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.0.0.0/16",
+          "GatewayId": "local",
+          "State": "active"
+        },
+        {
+          "DestinationCidrBlock": "0.0.0.0/0",
+          "GatewayId": "igw-synthetic",
+          "State": "active"
+        }
+      ]
+    },
+    {
+      "RouteTableId": "rtb-application-0",
+      "VpcId": "vpc-synthetic",
+      "Tags": [
+        {
+          "Key": "Tier",
+          "Value": "application"
+        }
+      ],
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.0.0.0/16",
+          "GatewayId": "local",
+          "State": "active"
+        }
+      ]
+    },
+    {
+      "RouteTableId": "rtb-application-1",
+      "VpcId": "vpc-synthetic",
+      "Tags": [
+        {
+          "Key": "Tier",
+          "Value": "application"
+        }
+      ],
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.0.0.0/16",
+          "GatewayId": "local",
+          "State": "active"
+        }
+      ]
+    },
+    {
+      "RouteTableId": "rtb-database-0",
+      "VpcId": "vpc-synthetic",
+      "Tags": [
+        {
+          "Key": "Tier",
+          "Value": "database"
+        }
+      ],
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.0.0.0/16",
+          "GatewayId": "local",
+          "State": "active"
+        }
+      ]
+    },
+    {
+      "RouteTableId": "rtb-database-1",
+      "VpcId": "vpc-synthetic",
+      "Tags": [
+        {
+          "Key": "Tier",
+          "Value": "database"
+        }
+      ],
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.0.0.0/16",
+          "GatewayId": "local",
+          "State": "active"
+        }
+      ]
+    }
+  ]
+}

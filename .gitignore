@@ -1,0 +1,30 @@
+# Terraform working directories and state
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+
+# Terraform plans and crash output
+*.tfplan
+*.plan
+crash.log
+crash.*.log
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local environment and secret-bearing variable files
+.env
+.env.*
+!.env.example
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Python caches and private AWS exports / execution artifacts
+__pycache__/
+*.py[cod]
+.private/
+routes-private.json

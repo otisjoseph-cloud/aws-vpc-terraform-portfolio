@@ -1,0 +1,59 @@
+name: Network validation
+
+on:
+  pull_request:
+    paths:
+      - '01-secure-vpc/**'
+      - '.github/workflows/terraform-validation.yml'
+  push:
+    paths:
+      - '01-secure-vpc/**'
+      - '.github/workflows/terraform-validation.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: terraform-validation-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Format and validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+        working-directory: 01-secure-vpc/terraform
+    env:
+      TF_IN_AUTOMATION: 'true'
+      TF_INPUT: 'false'
+      AWS_EC2_METADATA_DISABLED: 'true'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3
+        with:
+          terraform_version: '1.15.8'
+          terraform_wrapper: false
+
+      - name: Check formatting
+        run: terraform fmt -check -diff -recursive
+
+      - name: Initialize providers without a backend
+        run: terraform init -backend=false -input=false -lockfile=readonly -no-color
+
+      - name: Validate configuration
+        run: terraform validate -no-color
+
+      - name: Test topology with mocked AWS provider
+        run: terraform test -no-color
+
+      - name: Test route checker and CLI failure behavior
+        working-directory: .
+        run: python3 -m unittest discover -s 01-secure-vpc/tools/route-checker -v
